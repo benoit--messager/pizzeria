@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_org_pizzeria_domain_products_Product" modelAttribute="product" path="/products" versionField="Version" z="xCqgAhEDLITBCsUlAs+MoGn6Jmo=">
+        <field:input field="name" id="c_org_pizzeria_domain_products_Product_name" required="true" z="ssisKaE0t0w02Ninr81jMV+F/nU="/>
+        <field:input field="price" id="c_org_pizzeria_domain_products_Product_price" required="true" z="aJo9Fw0ZKt/2vXSycDyl5Bh2/YA="/>
+        <field:input field="tva" id="c_org_pizzeria_domain_products_Product_tva" required="true" z="3MNdUJlFdVGq13ldIEwIh0M61Dc="/>
+    </form:update>
+</div>

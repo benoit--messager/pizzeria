@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_org_pizzeria_domain_users_Profile" modelAttribute="profile" path="/profiles" versionField="Version" z="yv6tIq86EJo8J4McSPYIgCdeH8Q=">
+        <field:input field="name" id="c_org_pizzeria_domain_users_Profile_name" min="2" required="true" z="7Eebw4bK3qbrotDF16P2xQn8gh8="/>
+    </form:update>
+</div>

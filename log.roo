@@ -1,0 +1,49 @@
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-04-09 19:08:39
+//project --topLevelPackage org.pizzeria --projectName pizzeria --java 7 --packaging JAR
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-04-09 19:08:45
+
+jpa setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+entity jpa --class ~.domain.PizzeriaTable --permitReservedWords
+entity jpa --class ~.domain.users.User --permitReservedWords
+entity jpa --class ~.domain.users.Profile --permitReservedWords
+entity jpa --class ~.domain.Bill --permitReservedWords
+entity jpa --class ~.domain.products.Product
+entity jpa --class ~.domain.products.BillProducts
+entity jpa --class ~.domain.products.CustomProduct --extends ~.domain.products.Product
+
+enum type --class ~.domain.TableState
+enum constant --name Free --permitReservedWords 
+enum constant --name Busy --permitReservedWords 
+enum constant --name Unavailable --permitReservedWords
+
+focus --class ~.domain.users.User
+field string --fieldName login --notNull --sizeMin 2
+field string --fieldName password --notNull --sizeMin 2
+field string --fieldName confirmPassword --notNull --sizeMin 2 --transient 
+field reference --fieldName profile --type ~.domain.users.Profile
+
+focus --class ~.domain.users.Profile
+field string --fieldName name --notNull --sizeMin 2
+
+focus --class ~.domain.products.Product
+field string --fieldName name --notNull 
+field number --type float --fieldName price --notNull
+field number --type float --fieldName tva --notNull
+
+focus --class ~.domain.PizzeriaTable
+field string --fieldName name --notNull 
+field number --type int --fieldName seats --notNull 
+field enum --type ~.domain.TableState --fieldName tableState --notNull
+
+focus --class ~.domain.products.BillProducts
+field reference --fieldName product --type ~.domain.products.Product
+field reference --fieldName bill --type ~.domain.Bill
+field number --type int --fieldName productCount --notNull 
+ 
+focus --class ~.domain.Bill 
+field reference --type ~.domain.PizzeriaTable --fieldName pizzeriaTable --notNull --permitReservedWords 
+field set --fieldName billProducts --type ~.domain.products.BillProducts --mappedBy bill
+
+web mvc setup
+web mvc all --package ~.web
+security setup

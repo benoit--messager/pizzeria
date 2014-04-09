@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_org_pizzeria_domain_Bill" object="${bill}" path="/bills" z="/WzuvEWUUbTnRvQ7Is4SJET/3W0=">
+        <field:display field="pizzeriaTable" id="s_org_pizzeria_domain_Bill_pizzeriaTable" object="${bill}" z="7g8ZmyQyZ6ZV0sZ1t9PPJVhpwQI="/>
+    </page:show>
+    <form:list id="pl_org_pizzeria_domain_products_Product" items="${products}" z="yBxhvp+Fbz+jEMRgmvRb2sHZN+k=">
+        <field:customtable billid="${bill.id}" create="false" data="${products}" delete="false" id="l_org_pizzeria_domain_products_Product" path="/products" update="false" z="oM0J4n5knZ9d5a36b3n5etuHaUY=">
+            <field:column id="c_org_pizzeria_domain_products_Product_name" property="name" z="P7E7D6IKo1k95n1NhOFwC2c9cLs="/>
+            <field:column id="c_org_pizzeria_domain_products_Product_price" property="price" z="4Pi3oDNZKDYgsfcHMKwmmfQMC0k="/>
+            <field:column id="c_org_pizzeria_domain_products_Product_tva" property="tva" z="opOhP+TINTvA/UY9LdEh5l31pJE="/>
+        </field:customtable>
+    </form:list>
+    <TABLE>
+        <THEAD>
+            <tr>
+                <td>Item</td>
+                <td>Nombre</td>
+                <td>Montant unitaire</td>
+                <td>Total</td>
+            </tr>
+        </THEAD>
+        <TBODY>
+            <c:forEach items="${billLines}" var="line">
+                <tr>
+                    <td>${line.item}</td>
+                    <td>${line.count}</td>
+                    <td>${line.singleCost}</td>
+                    <td>${line.total}</td>
+                </tr>
+            </c:forEach>
+            <tr>
+                <td align="right" colspan="4">Total HT : ${totalHT}<BR/>TVA 5.5 : ${taxAmount}<BR/>Total TTC : ${totalTT}</td>
+            </tr>
+        </TBODY>
+    </TABLE>
+</div>
